@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "study_plans",
+  "info": {
+    "singularName": "study-plan",
+    "pluralName": "study-plans",
+    "displayName": "Study Plan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "minLength": 3,
+      "unique": true
+    },
+    "description": {
+      "type": "text",
+      "minLength": 3
+    },
+    "lisense": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lisense.lisense",
+      "inversedBy": "study_plans"
+    },
+    "subjects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::subject.subject",
+      "inversedBy": "study_plans"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course",
+      "mappedBy": "study_plan"
+    }
+  }
+}
